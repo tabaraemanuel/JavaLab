@@ -6,7 +6,7 @@ public class Catalog implements Serializable {
 
     private String name;
     private String path;
-    private List<Document> document = new ArrayList<>();
+    private List<Document> documents = new ArrayList<>();
 
     public Catalog(String name, String path) {
         this.name = name;
@@ -14,16 +14,15 @@ public class Catalog implements Serializable {
     }
 
     public void add(Document doc) {
-        document.add(doc);
+        documents.add(doc);
     }
     public Document findById(String id) {
-        int indexLoc = 0;
-        for(int j = 0; j < this.document.size();j++ )
-            if(document.get(j).getID().equals(id)){
-                indexLoc = j;
-                break;
+
+        for (Document document : this.documents)
+            if (document.getID().equals(id)) {
+                return document;
             }
-         return document.get(indexLoc);
+        return documents.get(0);
     }
 
     public String getName() {
@@ -41,7 +40,7 @@ public class Catalog implements Serializable {
         return "Catalog{" +
                 "name='" + name + '\'' +
                 ", path='" + path + '\'' +
-                ", document=" + document.toString() +
+                ", document=" + documents.toString() +
                 '}';
     }
 }
