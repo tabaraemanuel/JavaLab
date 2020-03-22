@@ -42,7 +42,7 @@ public class CatalogUtil {
 
     public static void view(Document doc) {
         try {
-            Desktop desktop = null;
+            Desktop desktop;
             if (Desktop.isDesktopSupported()) {
                 desktop = Desktop.getDesktop();
                 if( doc.getLocation().contains("https")){
